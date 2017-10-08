@@ -1,0 +1,57 @@
+********************************************************
+Versões que estão no branch de Develop
+
+Exemplo do fechamento da versão 0.0.1
+git checkout develop
+git add --all
+git reset --hard
+git pull origin develop
+git checkout -b release/0.0.1
+call mvn versions:set -DnewVersion=0.0.1 versions:commit
+git add --all
+git commit -m "Release 0.0.1"
+git checkout master
+git add --all
+git reset --hard
+git pull origin master
+git merge --no-ff release/0.0.1
+git push origin master
+git tag v_0_0_1
+git push origin v_0_0_1
+git checkout develop
+git merge --no-ff -s ours -m "Merging release/0.0.1 into develop using ours strategy" release/0.0.1
+call mvn versions:set -DnewVersion=0.0.2-SNAPSHOT versions:commit
+git add --all
+git commit -m "Starting version 0.0.2-SNAPSHOT"
+git push origin develop
+
+GERAR A BUILD
+git checkout v_0_0_1
+********************************************************
+
+Versões que estão no branch de Release
+
+Exemplo do fechamento da versão 7.12.05.01
+git checkout release/7.12.05.01
+git add --all
+git reset --hard
+git pull origin release/7.12.05.01
+call mvn versions:set -DnewVersion=7.12.05.01 versions:commit
+git add --all
+git commit -m "Release 7.12.05.01"
+git tag v_7_12_05_r01
+git push origin v_7_12_05_r01
+git push origin release/7.12.05.01
+git checkout v_7_12_05_r01
+Gerar a Build
+
+Fazer o merge ours para as versões mais novas se existir.
+Exemplo:
+git merge --no-ff -s ours release/7.15.03
+
+No final do processo é necessário remover o branch de release. Se você estiver usando o Stash siga os seguintes passos:
+Clique na opção branchs, do lado esquerdo;
+Escolha o branch que deseja remover e no final da linha do lado direito, vai ter 3 pontos, clique na opção Delete;
+Ou em linha de comando, acessando o repositório e digitando o comando git push origin :release/1.2.3.3;
+
+********************************************************
