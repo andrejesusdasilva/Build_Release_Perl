@@ -297,7 +297,7 @@ sub build_release{
 	  #Precisa fazer o clone do projeto
 	  $sigla_clone = %$repos->{$app}->{sigla_clone};
 	  mkdir $dirclonereposcompleto;
-	  print `git clone ssh://git\@stash.matera.com:7999/cm/$dirclonerepos\.git $dirclonereposcompleto`;
+	  print `git clone ssh://git\@nome.repos.com:7999/cm/$dirclonerepos\.git $dirclonereposcompleto`;
 	  chdir $dirclonereposcompleto;
 	  &exec_build_releaseGit();
 	  exit 1;
@@ -337,7 +337,7 @@ sub build_develop{
           $sigla_clone = %$repos->{$app}->{sigla_clone};		
 	  mkdir $dirclonereposcompleto;
 	  
-	  print `git clone ssh://git\@stash.matera.com:7999/$sigla_clone/$dirclonerepos\.git $dirclonereposcompleto`;
+	  print `git clone ssh://git\@nome.repos.com:7999/$sigla_clone/$dirclonerepos\.git $dirclonereposcompleto`;
 	  chdir $dirclonereposcompleto;
 	  &exec_build_developGit();
 	  exit 1;
@@ -377,7 +377,7 @@ sub build_others{
           $sigla_clone = %$repos->{$app}->{sigla_clone};		
 	  mkdir $dirclonereposcompleto;
 	  
-	  print `git clone ssh://git\@stash.matera.com:7999/$sigla_clone/$dirclonerepos\.git $dirclonereposcompleto`;
+	  print `git clone ssh://git\@nome.repos.com:7999/$sigla_clone/$dirclonerepos\.git $dirclonereposcompleto`;
 	  chdir $dirclonereposcompleto;
 	  &exec_build_others();
 	  exit 1;
